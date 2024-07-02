@@ -1,13 +1,15 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import NavbarComponent from "../../components/Navbar/Navbar";
-import Profile from "../../components/Profile/Profile";
 import "./Layout.scss";
 
-const Layout: React.FC = () => {
+const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <NavbarComponent />
-      <Profile />
+      <Container>
+        <NavbarComponent />
+        <div className="main">{children}</div>
+      </Container>
     </>
   );
 };
