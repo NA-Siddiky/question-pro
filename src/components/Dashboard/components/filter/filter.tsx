@@ -7,6 +7,7 @@ declare type propsType = {
   placeholder: string;
   data: any;
   searchOption: string;
+  value: string;
 };
 
 const Filter: React.FC<propsType> = ({
@@ -16,19 +17,11 @@ const Filter: React.FC<propsType> = ({
   data,
   searchOption,
 }) => {
-  const datas = [];
-
-  for (let i = 0; i < data?.length; i++) {
-    datas.push({
-      label: data[i]?.name,
-      value: data[i]?.id,
-    });
-  }
-  console.log("data", datas);
   return (
     <Select
       showSearch
       allowClear
+      defaultValue={"All"}
       placeholder={placeholder}
       optionFilterProp={searchOption}
       onChange={onChange}
@@ -38,7 +31,7 @@ const Filter: React.FC<propsType> = ({
           label: "All",
           value: "all",
         },
-        ...datas,
+        ...data,
       ]}
     />
   );

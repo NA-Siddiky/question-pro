@@ -10,15 +10,20 @@ const Posts: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [, setValue] = useState<number>(0);
+  const filterOptions: any[] = [];
 
   useEffect(() => {
     (async () => {
       try {
         setLoading(true);
         const { data } = await getAllPosts();
-        const users = await getAllUsers();
+        const user = await getAllUsers();
 
-        setUsers(users.data);
+        setUsers(user?.data);
+
+        console.log("users", users?.data);
+
+        // setUsers(users.data);
 
         setPosts(data);
         setLoading(false);
@@ -28,6 +33,15 @@ const Posts: React.FC = () => {
       }
     })();
   }, []);
+
+  if (users?.length) {
+    for (let i = 0; i < users?.length; i++) {
+      filterOptions.push({
+        label: users?.[i]?.name,
+        value: users?.[i]?.id,
+      });
+    }
+  }
 
   const onChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -41,9 +55,9 @@ const Posts: React.FC = () => {
     console.log("search:", value);
   };
 
-  if (loading) {
-    return <>Loading...</>;
-  }
+  // if (loading) {
+  //   return <>Loading...</>;
+  // }
 
   const allPosts = filterPosts?.length ? filterPosts : posts;
   return (
@@ -51,13 +65,15 @@ const Posts: React.FC = () => {
       <div className="status__bar">
         <div className="dashboard__title">Posts</div>
         <div className="filter">
-          <Filter
-            placeholder="Select a user"
-            onChange={onChange}
-            onSearch={onSearch}
-            data={users}
-            searchOption="label"
-          />
+          {filterOptions?.length ? (
+            <Filter
+              placeholder="Select a user"
+              onChange={onChange}
+              onSearch={onSearch}
+              data={filterOptions}
+              searchOption="label"
+            />
+          ) : null}
         </div>
       </div>
       <div className="all__posts">

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import "./dashboard.scss";
 
 const Dashboard: React.FC = () => {
   return (

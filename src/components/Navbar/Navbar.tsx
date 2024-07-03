@@ -3,21 +3,40 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import "./navbar.scss";
 
 const NavbarComponent: React.FC = () => {
+  const localtion = useLocation();
+  const path = localtion.pathname === "/dashboard/comments";
+
   return (
-    <Navbar bg="light" data-bs-theme="light">
+    <Navbar bg="light" data-bs-theme="light" className="navbar">
       <Nav className="me-auto">
-        <Link to="/" className="nav-link">
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active" : "";
+          }}
+          to="/"
+        >
           Home
-        </Link>
-        <Link to="/dashboard/posts" className="nav-link">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => {
+            return isActive || path ? "active" : "";
+          }}
+          to={"/dashboard/posts"}
+        >
           Dashboard
-        </Link>
-        <Link to="/my-component" className="nav-link">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active" : "";
+          }}
+          to="/my-component"
+        >
           My Component
-        </Link>
+        </NavLink>
       </Nav>
     </Navbar>
   );

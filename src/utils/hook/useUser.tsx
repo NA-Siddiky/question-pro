@@ -15,7 +15,10 @@ const UserContext = createContext<IUserContext | undefined>(undefined);
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUserState] = useState<IUser>({});
+  const [user, setUserState] = useState<IUser>({
+    name: "Siddidy",
+    email: "siddidy@gmail.com",
+  });
 
   const setUser = useCallback((newUser: IUser) => {
     setUserState(newUser);
