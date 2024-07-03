@@ -16,7 +16,6 @@ const MyComponent: React.FC = () => {
     <>
       <div>
         <p>Only one button can be active at {count} time.</p>
-        {/* Pass the button ID and check if it matches the activeButton state */}
         <ButtonComponent
           onClick={() => handleClick("countable")}
           isClicked={activeButton === "countable"}

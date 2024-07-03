@@ -1,26 +1,24 @@
 // src/utils/useUser.tsx
-import React, { createContext, useContext, useState } from "react";
+import React, { Dispatch, createContext, useContext, useState } from "react";
 
-interface IUser {
+interface User {
   name?: string;
   email?: string;
 }
 
-interface IUserContext extends IUser {
-  setUser: (user: IUser) => void;
+interface UserContext extends User {
+  setUser: Dispatch<any>;
 }
 
-const UserContext = createContext<IUserContext | undefined>(undefined);
+const UserContext = createContext<UserContext | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<IUser>({
+  const [user, setUser] = useState<User>({
     name: "Siddidy",
     email: "siddidy@gmail.com",
   });
-
-  console.log("context user", user);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

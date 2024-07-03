@@ -22,11 +22,11 @@ const Filter: React.FC<propsType> = ({
   }
   return (
     <Select
-      // showSearch
+      showSearch
       allowClear
       defaultValue={"All"}
       placeholder={placeholder}
-      // optionFilterProp={searchOption}
+      optionFilterProp={searchOption}
       onChange={onChange}
       onSearch={onSearch}
       options={[
