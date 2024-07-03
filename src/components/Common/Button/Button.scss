@@ -1,0 +1,18 @@
+.button-style {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f3f3f3;
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+.clicked {
+  background-color: blue !important;
+  color: #f0f0f0;
+}
