@@ -12,7 +12,7 @@ const NavbarComponent: React.FC = () => {
         <Link to="/" className="nav-link">
           Home
         </Link>
-        <Link to="/dashboard" className="nav-link">
+        <Link to="/dashboard/posts" className="nav-link">
           Dashboard
         </Link>
         <Link to="/my-component" className="nav-link">
