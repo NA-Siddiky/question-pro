@@ -27,7 +27,7 @@ bash cd question-pro
 
 Install the necessary dependencies:
 
-bash npm install
+npm install
 
 #### Start the Development Server
 
