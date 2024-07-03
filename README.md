@@ -15,13 +15,13 @@ Ensure you have Node.js installed on your machine.
 #### Clone the Repository
 
 Open your terminal and clone the repository using the following command:
-bash git clone https://github.com/NA-Siddiky/question-pro.git
+git clone https://github.com/NA-Siddiky/question-pro.git
 
 #### Navigate to the Project Directory
 
 Change into the cloned project directory:
 
-bash cd question-pro
+cd question-pro
 
 #### Install Dependencies
 
@@ -33,7 +33,7 @@ npm install
 
 Start the development server:
 
-bash npm run dev
+npm run dev
 
 Your application will now be running at http://localhost:5173. Open this URL in your browser to view the application.
 
