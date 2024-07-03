@@ -3,7 +3,7 @@
 import React from "react";
 
 const Home: React.FC = () => {
-  return <h2>Welcome to the Home Page</h2>;
+  return <h1>Welcome to React Assignment</h1>;
 };
 
 export default Home;
