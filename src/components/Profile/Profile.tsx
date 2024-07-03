@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "../../utils/hook/useUser";
 
 const Profile: React.FC = () => {
-  const { name, email, setUser } = useUser();
-  const [localName, setLocalName] = useState(name || "");
-  const [localEmail, setLocalEmail] = useState(email || "");
+  const { user, setUser } = useUser();
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newName = event.target.value;
-    setLocalName(newName);
-    setUser({ name: newName, email });
-  };
+  // console.log("user", user);
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = event.target.value;
-    setLocalEmail(newEmail);
-    setUser({ name, email: newEmail });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   return (
@@ -28,8 +20,9 @@ const Profile: React.FC = () => {
           type="text"
           className="form-control"
           id="name"
-          value={localName}
-          onChange={handleNameChange}
+          name="name"
+          value={user.name}
+          onChange={handleChange}
           placeholder="Enter name"
           autoComplete="off"
         />
@@ -39,11 +32,12 @@ const Profile: React.FC = () => {
           Email address
         </label>
         <input
+          name="email"
           type="email"
           className="form-control"
           id="email"
-          value={localEmail}
-          onChange={handleEmailChange}
+          value={user?.email}
+          onChange={handleChange}
           placeholder="example@email.com"
           autoComplete="off"
         />

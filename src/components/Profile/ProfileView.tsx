@@ -4,15 +4,18 @@ import { useUser } from "../../utils/hook/useUser";
 import "./profile-view.scss";
 
 const ProfileView: React.FC = () => {
-  const { name, email } = useUser();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   return (
     <div className="profile__view">
       <p onClick={() => navigate("/user")} className="name">
-        {name || ""}
+        {user.name || ""}
       </p>
-      <p className="email"> {email || ""} </p>
+      <p onClick={() => navigate("/user")} className="email">
+        {" "}
+        {user.email || ""}{" "}
+      </p>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import type { SelectProps } from "antd";
 import React, { useEffect, useState } from "react";
 import { getAllPosts, getAllUsers } from "../../service";
 import Filter from "../filter/filter";
@@ -10,7 +11,7 @@ const Posts: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [, setValue] = useState<number>(0);
-  const filterOptions: any[] = [];
+  const filterOptions: SelectProps["options"] = [];
 
   useEffect(() => {
     (async () => {
@@ -20,10 +21,6 @@ const Posts: React.FC = () => {
         const user = await getAllUsers();
 
         setUsers(user?.data);
-
-        console.log("users", users?.data);
-
-        // setUsers(users.data);
 
         setPosts(data);
         setLoading(false);
@@ -44,8 +41,6 @@ const Posts: React.FC = () => {
   }
 
   const onChange = (value: string) => {
-    console.log(`selected ${value}`);
-
     const filterData = posts.filter((data: any) => data.userId === value);
     setFilterPosts(filterData);
     setValue(value);

@@ -17,13 +17,16 @@ const Filter: React.FC<propsType> = ({
   data,
   searchOption,
 }) => {
+  if (!data?.length) {
+    return null;
+  }
   return (
     <Select
-      showSearch
+      // showSearch
       allowClear
       defaultValue={"All"}
       placeholder={placeholder}
-      optionFilterProp={searchOption}
+      // optionFilterProp={searchOption}
       onChange={onChange}
       onSearch={onSearch}
       options={[

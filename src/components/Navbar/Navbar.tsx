@@ -11,7 +11,7 @@ const NavbarComponent: React.FC = () => {
   const path = localtion.pathname === "/dashboard/comments";
 
   return (
-    <Navbar bg="light" data-bs-theme="light" className="navbar">
+    <Navbar data-bs-theme="light" className="navbar">
       <Nav className="me-auto">
         <NavLink
           className={({ isActive }) => {
